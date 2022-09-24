@@ -1,0 +1,17 @@
+.col-md-4 {
+    margin-top: 27px;
+}
+
+.card {
+    background-color: azure;
+}
+
+.card:hover {
+    scale: 1.05 1.05;
+    transition: 1s;
+}
+
+.navbar a {
+    color: inherit;
+    text-decoration: none;
+}

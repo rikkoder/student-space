@@ -1,0 +1,48 @@
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <% for (let branch of branches) { %>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="d-flex flex-row mb-3"><img src="<%= branch.img %>" width="70" height="70">
+                        <div class="d-flex flex-column ml-2">
+                            <span><%= branch.name %></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between install mt-3">
+                        <span>
+                            <%= branch.resources %> resources available
+                        </span>
+                        <a href="/branch/<%= branch.name %>">
+                            <span class="text-primary">
+                                View&nbsp;<i class="fa fa-angle-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+            <!-- <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/ccMhxvC.png" width="70">
+                        <div class="d-flex flex-column ml-2"><span>Stripe</span><span class="text-black-50">Payment
+                                Services</span><span class="ratings"><i class="fa fa-star"></i><i
+                                    class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                        </div>
+                    </div>
+                    <h6>Get more context on your users with stripe data inside our platform.</h6>
+                    <div class="d-flex justify-content-between install mt-3"><span>Installed 172 times</span><span
+                            class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>

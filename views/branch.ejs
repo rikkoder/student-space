@@ -1,0 +1,35 @@
+<%- include('partials/head') %>
+
+<body>
+    <link rel="stylesheet" href="/css/branch.css">
+
+    <%- include('partials/navbar') %>
+
+    <h1>
+        <%= branch %>
+    </h1>
+
+    <% for (let resource of resources) { %>
+    <div class="col-md-4">
+        <div class="card p-3">
+            <div class="d-flex flex-row mb-3"><img src="<%= resource.img %>" width="70" height="70">
+                <div class="d-flex flex-column ml-2">
+                    <span><%= resource.title %></span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between install mt-3">
+                <!-- <span>
+                    <%#= branch.resources %> resources available
+                </span> -->
+                <a href="<%= resource.url %>">
+                    <span class="text-primary">
+                        View&nbsp;<i class="fa fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</body>
+
+</html>
