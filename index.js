@@ -21,8 +21,6 @@ const app = express();
 const MONGO_PORT = process.env.MONGO_PORT || 27017
 const DB_URL = process.env.DB_URL || `mongodb://localhost:${MONGO_PORT}/student-space`;
 
-console.log(DB_URL);
-
 const MongoDBStore = require("connect-mongo")(session);
 
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
