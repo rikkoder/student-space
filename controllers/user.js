@@ -38,12 +38,10 @@ module.exports.logout = (req, res) => {
         req.flash('success', 'Logout Successful!');
         res.redirect('/');
     });
-    // req.session.destroy();
-    // req.flash('success', "Goodbye!");
-    // res.redirect('/');
 };
 
 module.exports.renderProfile = async (req, res) => {
-    const resources = await Resource.find({ provider: req.user.username });
-    res.render('users/profile', { user: req.user, resources });
+    const username = req.params.username;
+    const resources = await Resource.find({ provider: username });
+    res.render('users/profile', { user: req.user, username, resources });
 };
