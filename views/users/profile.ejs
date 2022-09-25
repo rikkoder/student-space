@@ -1,0 +1,18 @@
+<%- include('../partials/head') %>
+
+<body>
+    <link rel="stylesheet" href="/css/profile.css">
+
+    <%- include('../partials/navbar') %>
+
+    <main>
+        <div class="title">
+            <h1><%= user.username %></h1>
+            <h2>provided <%= resources.length %> resources</h2>
+        </div>
+
+        <%- include('../partials/resources') %>
+    </main>
+</body>
+
+</html>

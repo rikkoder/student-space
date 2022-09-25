@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 const path = require('path');
 
-// const branches = ['CSE', 'IT', 'ECE', 'EE', 'MECH', 'CHE', 'META', 'BIOMED', 'BIOTECH'];
-// const types = ['BOOK', 'COLLECTION', 'LECTURE', 'ANIMATION', 'NOTES', 'PROBLEM-SET', 'SOLVED-PROBLEMS'];
-// const tags = ['MATHS', 'PHYSICS', 'CHEMISTRY', 'COMPUTER NETWORKS', 'DATA STRUCTURES', 'COMMUNICATION SYSTEM', 'COMPUTER PROGRAMMING', 'LINEAR ALGEBRA', 'CALCULUS', 'OBJECT ORIENTED MODEL', 'MACHINE LEARNING', 'ALGORITHMS', 'OBJECT ORIENTED PROGRAMMING', 'FLUID DYNAMICS', 'DIGITAL IMAGE PROCESSING', 'DATA SCIENCE', 'DATA MINING', 'QUESTION PAPER', 'ECONOMICS', 'ENGINEERING GRAPHICS', 'COMPUTER ARCHITECTURE (COA/CSA/ACA)'];
-
-const { branches, types, tags } = require(path.join(__dirname, '../constants.js'));
+const { branches, types, tags } = require(path.join(__dirname, '../utils/constants.js'));
 
 branch_names = branches.map( branch => branch.name );
 type_names = types.map( type => type.name );
@@ -13,8 +9,10 @@ type_names = types.map( type => type.name );
 const resourceSchema = new mongoose.Schema({
     title: {
         type: String,
+        lowercase: true,
         required: true,
         minLength: 5,
+        maxLength: 15,
     },
     provider: {
         type: String,
@@ -60,7 +58,8 @@ const resourceSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        minLength: 50,
+        minLength: 20,
+        maxLength: 100,
         required: true,
     },
     tag: [{
@@ -70,5 +69,7 @@ const resourceSchema = new mongoose.Schema({
         required: true,
     }],
 });
+
+resourceSchema.index({ title: 'text' });
 
 module.exports = mongoose.model('Resource', resourceSchema);
